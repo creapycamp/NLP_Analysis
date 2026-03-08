@@ -44,6 +44,11 @@ df['Sentiment'] = df['Rating'].apply(label_sentiment)
 # Text Preprocessing
 # -----------------------------
 stop_words = set(stopwords.words('english'))
+
+# Keep important negation words
+negation_words = {"not", "no", "nor", "never"}
+
+stop_words = stop_words - negation_words
 lemmatizer = WordNetLemmatizer()
 
 def preprocess(text):
@@ -71,7 +76,6 @@ tfidf_vectorizer = TfidfVectorizer(
     max_features=5000,
     ngram_range=(1,2)
 )
-
 X = tfidf_vectorizer.fit_transform(df['Clean_Text'])
 y = df['Sentiment']
 

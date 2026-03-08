@@ -143,7 +143,6 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 Run the Application
 python app.py
-
 The Gradio interface will open in your browser.
 
 Future Improvements
